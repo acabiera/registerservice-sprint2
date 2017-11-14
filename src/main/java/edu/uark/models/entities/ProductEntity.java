@@ -14,29 +14,35 @@ import edu.uark.models.api.Product;
 import edu.uark.models.entities.fieldnames.ProductFieldNames;
 import edu.uark.models.repositories.ProductRepository;
 
-public class ProductEntity extends BaseEntity<ProductEntity> {
+public class ProductEntity extends BaseEntity<ProductEntity> 
+{
 	@Override
-	protected void fillFromRecord(ResultSet rs) throws SQLException {
+	protected void fillFromRecord(ResultSet rs) throws SQLException 
+	{
 		this.lookupCode = rs.getString(ProductFieldNames.LOOKUP_CODE);
-		this.count = rs.getInt(ProductFieldNames.COUNT);
+		this.quantity = rs.getInt(ProductFieldNames.QUANTITY);
 		this.createdOn = rs.getTimestamp(ProductFieldNames.CREATED_ON).toLocalDateTime();
 	}
 
 	@Override
-	protected Map<String, Object> fillRecord(Map<String, Object> record) {
+	protected Map<String, Object> fillRecord(Map<String, Object> record) 
+	{
 		record.put(ProductFieldNames.LOOKUP_CODE, this.lookupCode);
-		record.put(ProductFieldNames.COUNT, this.count);
+		record.put(ProductFieldNames.QUANTITY, this.quantity);
 		record.put(ProductFieldNames.CREATED_ON, Timestamp.valueOf(this.createdOn));
 		
 		return record;
 	}
 
 	private String lookupCode;
-	public String getLookupCode() {
+	public String getLookupCode() 
+	{
 		return this.lookupCode;
 	}
-	public ProductEntity setLookupCode(String lookupCode) {
-		if (!StringUtils.equals(this.lookupCode, lookupCode)) {
+	public ProductEntity setLookupCode(String lookupCode) 
+	{
+		if (!StringUtils.equals(this.lookupCode, lookupCode)) 
+		{
 			this.lookupCode = lookupCode;
 			this.propertyChanged(ProductFieldNames.LOOKUP_CODE);
 		}
@@ -44,26 +50,31 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 		return this;
 	}
 
-	private int count;
-	public int getCount() {
-		return this.count;
+	private int quantity;
+	public int getQuantity() 
+	{
+		return this.quantity;
 	}
-	public ProductEntity setCount(int count) {
-		if (this.count != count) {
-			this.count = count;
-			this.propertyChanged(ProductFieldNames.COUNT);
+	public ProductEntity setQuantity(int quantity) 
+	{
+		if (this.quantity != quantity) 
+		{
+			this.quantity = quantity;
+			this.propertyChanged(ProductFieldNames.QUANTITY);
 		}
 		
 		return this;
 	}
 
 	private LocalDateTime createdOn;
-	public LocalDateTime getCreatedOn() {
+	public LocalDateTime getCreatedOn() 
+	{
 		return this.createdOn;
 	}
 	
-	public Product synchronize(Product apiProduct) {
-		this.setCount(apiProduct.getCount());
+	public Product synchronize(Product apiProduct) 
+	{
+		this.setQuantity(apiProduct.getQuantity());
 		this.setLookupCode(apiProduct.getLookupCode());
 		
 		apiProduct.setCreatedOn(this.createdOn);
@@ -71,28 +82,39 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 		return apiProduct;
 	}
 	
-	public ProductEntity() {
+	public ProductEntity() 
+	{
 		super(new ProductRepository());
 		
-		this.count = -1;
+		this.quantity = -1;
 		this.lookupCode = StringUtils.EMPTY;
 		this.createdOn = LocalDateTime.now();
+		this.name = StringUtils.EMPTY;
+		this.price = -1;
+		this.active = false;
 	}
 	
-	public ProductEntity(UUID id) {
+	public ProductEntity(UUID id) 
+	{
 		super(id, new ProductRepository());
 		
-		this.count = -1;
+		this.quantity = -1;
 		this.lookupCode = StringUtils.EMPTY;
 		this.createdOn = LocalDateTime.now();
+		this.name = StringUtils.EMPTY;
+		this.price = -1;
+		this.active = false;
 	}
 
-	public ProductEntity(Product apiProduct) {
+	public ProductEntity(Product apiProduct) 
+	{
 		super(apiProduct.getId(), new ProductRepository());
 		
-		this.count = apiProduct.getCount();
+		this.quantity = apiProduct.getQuantity();
 		this.lookupCode = apiProduct.getLookupCode();
-
 		this.createdOn = LocalDateTime.now();
+		this.name = apiProduct.getName();
+		this.price = apiProduct.getPrice();
+		this.active = apiProduct.getActive();
 	}
 }
