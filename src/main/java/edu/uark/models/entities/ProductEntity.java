@@ -94,12 +94,12 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		return this;
 	}
 	
-	private int price;
-	public int getPrice() 
+	private double price;
+	public double getPrice() 
 	{
 		return this.price;
 	}
-	public ProductEntity setPrice(int price) 
+	public ProductEntity setPrice(double price) 
 	{
 		if (this.price != price) 
 		{
@@ -147,7 +147,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.lookupCode = StringUtils.EMPTY;
 		this.createdOn = LocalDateTime.now();
 		this.name = StringUtils.EMPTY;
-		this.price = -1;
+		this.price = 0.00;
 		this.active = false;
 	}
 	
@@ -159,7 +159,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.lookupCode = StringUtils.EMPTY;
 		this.createdOn = LocalDateTime.now();
 		this.name = StringUtils.EMPTY;
-		this.price = -1;
+		this.price = 0.00;
 		this.active = false;
 	}
 

@@ -54,8 +54,8 @@ public class Product {
 		return this;
 	}
 	
-	private int price;
-	public int getPrice() {
+	private double price;
+	public double getPrice() {
 		return this.price;
 	}
 	public Product setPrice(int price) {
@@ -102,7 +102,7 @@ public class Product {
 		this.id = new UUID(0, 0);
 		this.createdOn = LocalDateTime.now();
 		this.name = "";
-		this.price = -1;
+		this.price = 0.00;
 		this.active = false;
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
