@@ -27,12 +27,12 @@ public class Product {
 		return this;
 	}
 	
-	private int count;
-	public int getCount() {
-		return this.count;
+	private int quantity;
+	public int getQuantity() {
+		return this.quantity;
 	}
-	public Product setCount(int count) {
-		this.count = count;
+	public Product setQuantity(int quantity) {
+		this.quantity = quantity;
 		return this;
 	}
 	
@@ -42,6 +42,33 @@ public class Product {
 	}
 	public Product setCreatedOn(LocalDateTime createdOn) {
 		this.createdOn = createdOn;
+		return this;
+	}
+	
+	private String name;
+	public String getName() {
+		return this.name;
+	}
+	public Product setName(String name) {
+		this.name = name;
+		return this;
+	}
+	
+	private int price;
+	public int getPrice() {
+		return this.price;
+	}
+	public Product setPrice(int price) {
+		this.price = price;
+		return this;
+	}
+	
+	private boolean active;
+	public boolean getActive() {
+		return this.active;
+	}
+	public Product setActive(boolean active) {
+		this.active = active;
 		return this;
 	}
 	
@@ -70,19 +97,25 @@ public class Product {
 	}
 	
 	public Product() {
-		this.count = -1;
+		this.quantity = -1;
 		this.lookupCode = "";
 		this.id = new UUID(0, 0);
 		this.createdOn = LocalDateTime.now();
+		this.name = "";
+		this.price = -1;
+		this.active = false;
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
 	}
 	
 	public Product(ProductEntity productEntity) {
 		this.id = productEntity.getId();
-		this.count = productEntity.getCount();
+		this.quantity = productEntity.getQuantity();
 		this.createdOn = productEntity.getCreatedOn();
 		this.lookupCode = productEntity.getLookupCode();
+		this.name = productEntity.getName();
+		this.price = productEntity.getPrice();
+		this.active = productEntity.getActive();
 
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;

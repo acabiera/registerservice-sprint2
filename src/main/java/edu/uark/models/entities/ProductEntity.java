@@ -22,6 +22,9 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.lookupCode = rs.getString(ProductFieldNames.LOOKUP_CODE);
 		this.quantity = rs.getInt(ProductFieldNames.QUANTITY);
 		this.createdOn = rs.getTimestamp(ProductFieldNames.CREATED_ON).toLocalDateTime();
+		this.name = rs.getString(ProductFieldNames.NAME);
+		this.price = rs.getInt(ProductFieldNames.PRICE);
+		this.active = rs.getBoolean(ProductFieldNames.ACTIVE);
 	}
 
 	@Override
@@ -30,6 +33,9 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		record.put(ProductFieldNames.LOOKUP_CODE, this.lookupCode);
 		record.put(ProductFieldNames.QUANTITY, this.quantity);
 		record.put(ProductFieldNames.CREATED_ON, Timestamp.valueOf(this.createdOn));
+		record.put(ProductFieldNames.NAME, this.name);
+		record.put(ProductFieldNames.PRICE, this.price);
+		record.put(ProductFieldNames.ACTIVE, this.active);
 		
 		return record;
 	}
@@ -72,10 +78,61 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		return this.createdOn;
 	}
 	
+	private String name;
+	public String getName() 
+	{
+		return this.name;
+	}
+	public ProductEntity setName(String name) 
+	{
+		if (!StringUtils.equals(this.name, name)) 
+		{
+			this.name = name;
+			this.propertyChanged(ProductFieldNames.NAME);
+		}
+		
+		return this;
+	}
+	
+	private int price;
+	public int getPrice() 
+	{
+		return this.price;
+	}
+	public ProductEntity setPrice(int price) 
+	{
+		if (this.price != price) 
+		{
+			this.price = price;
+			this.propertyChanged(ProductFieldNames.PRICE);
+		}
+		
+		return this;
+	}
+	
+	private boolean active;
+	public boolean getActive() 
+	{
+		return this.active;
+	}
+	public ProductEntity setActive(boolean active) 
+	{
+		if (this.active != active) 
+		{
+			this.active = active;
+			this.propertyChanged(ProductFieldNames.ACTIVE);
+		}
+		
+		return this;
+	}
+	
 	public Product synchronize(Product apiProduct) 
 	{
 		this.setQuantity(apiProduct.getQuantity());
 		this.setLookupCode(apiProduct.getLookupCode());
+		this.setName(apiProduct.getName());
+		this.setPrice(apiProduct.getPrice());
+		this.setActive(apiProduct.getActive());
 		
 		apiProduct.setCreatedOn(this.createdOn);
 		
