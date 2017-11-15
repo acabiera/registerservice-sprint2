@@ -35,6 +35,7 @@ public class ProductRestController {
 
 	@RequestMapping(value = "/apiv0/products", method = RequestMethod.GET)
 	public ProductListing getProducts() {
+		System.out.println("\n");
 		return (new ProductsQuery()).execute();
 	}
 	
