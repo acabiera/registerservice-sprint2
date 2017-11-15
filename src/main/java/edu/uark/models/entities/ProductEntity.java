@@ -25,6 +25,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.name = rs.getString(ProductFieldNames.NAME);
 		this.price = rs.getDouble(ProductFieldNames.PRICE);
 		this.active = rs.getBoolean(ProductFieldNames.ACTIVE);
+		this.description = rs.getString(ProductFieldNames.DESCRIPTION);
 	}
 
 	@Override
@@ -36,6 +37,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		record.put(ProductFieldNames.NAME, this.name);
 		record.put(ProductFieldNames.PRICE, this.price);
 		record.put(ProductFieldNames.ACTIVE, this.active);
+		record.put(ProductFieldNames.DESCRIPTION, this.description);
 		
 		return record;
 	}
@@ -126,6 +128,22 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		return this;
 	}
 	
+	private String description;
+	public String getDescription() 
+	{
+		return this.description;
+	}
+	public ProductEntity setDescription(String description) 
+	{
+		if (!StringUtils.equals(this.description, description)) 
+		{
+			this.description = description;
+			this.propertyChanged(ProductFieldNames.DESCRIPTION);
+		}
+		
+		return this;
+	}
+	
 	public Product synchronize(Product apiProduct) 
 	{
 		this.setQuantity(apiProduct.getQuantity());
@@ -133,6 +151,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.setName(apiProduct.getName());
 		this.setPrice(apiProduct.getPrice());
 		this.setActive(apiProduct.getActive());
+		this.setDescription(apiProduct.getDescription());
 		
 		apiProduct.setCreatedOn(this.createdOn);
 		
@@ -149,6 +168,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.name = StringUtils.EMPTY;
 		this.price = 0.00;
 		this.active = false;
+		this.description = StringUtils.EMPTY;		
 	}
 	
 	public ProductEntity(UUID id) 
@@ -161,6 +181,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.name = StringUtils.EMPTY;
 		this.price = 0.00;
 		this.active = false;
+		this.description = StringUtils.EMPTY;
 	}
 
 	public ProductEntity(Product apiProduct) 
@@ -173,5 +194,6 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.name = apiProduct.getName();
 		this.price = apiProduct.getPrice();
 		this.active = apiProduct.getActive();
+		this.description = apiProduct.getDescription();
 	}
 }
