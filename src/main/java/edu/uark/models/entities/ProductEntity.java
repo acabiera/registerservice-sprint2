@@ -23,7 +23,7 @@ public class ProductEntity extends BaseEntity<ProductEntity>
 		this.quantity = rs.getInt(ProductFieldNames.QUANTITY);
 		this.createdOn = rs.getTimestamp(ProductFieldNames.CREATED_ON).toLocalDateTime();
 		this.name = rs.getString(ProductFieldNames.NAME);
-		this.price = rs.getInt(ProductFieldNames.PRICE);
+		this.price = rs.getDouble(ProductFieldNames.PRICE);
 		this.active = rs.getBoolean(ProductFieldNames.ACTIVE);
 	}
 
