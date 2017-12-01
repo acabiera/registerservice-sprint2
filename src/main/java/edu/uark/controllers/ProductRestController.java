@@ -16,30 +16,37 @@ import edu.uark.commands.products.ProductsQuery;
 import edu.uark.models.api.Product;
 import edu.uark.models.api.ProductListing;
 
+
+//-----------Product-------------//
 @RestController
 @RequestMapping(value = "/product")
-public class ProductRestController {
+public class ProductRestController 
+{
 	@RequestMapping(value = "/apiv0/{productId}", method = RequestMethod.GET)
-	public Product getProduct(@PathVariable UUID productId) {
+	public Product getProduct(@PathVariable UUID productId) 
+	{
 		return (new ProductQuery()).
 			setProductId(productId).
 			execute();
 	}
 
 	@RequestMapping(value = "/apiv0/byLookupCode/{productLookupCode}", method = RequestMethod.GET)
-	public Product getProductByLookupCode(@PathVariable String productLookupCode) {
+	public Product getProductByLookupCode(@PathVariable String productLookupCode) 
+	{
 		return (new ProductByLookupCodeQuery()).
 			setLookupCode(productLookupCode).
 			execute();
 	}
 
 	@RequestMapping(value = "/apiv0/products", method = RequestMethod.GET)
-	public ProductListing getProducts() {
+	public ProductListing getProducts() 
+	{
 		return (new ProductsQuery()).execute();
 	}
 	
 	@RequestMapping(value = "/apiv0/", method = RequestMethod.PUT)
-	public Product putProduct(@RequestBody Product product) {
+	public Product putProduct(@RequestBody Product product) 
+	{
 		return (new ProductSaveCommand()).
 			setApiProduct(product).
 			execute();
@@ -47,7 +54,8 @@ public class ProductRestController {
 
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String test() {
+	public String test() 
+	{
 		return "Successful test. (ProductRestController)";
 	}
 }
