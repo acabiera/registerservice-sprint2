@@ -10,6 +10,7 @@ public enum ProductApiRequestStatus {
 	NOT_FOUND(3),
 	LOOKUP_CODE_ALREADY_EXISTS(4);
 	
+	//Danielle Testing
 	public int getValue() {
 		return value;
 	}
@@ -17,7 +18,6 @@ public enum ProductApiRequestStatus {
 	public static ProductApiRequestStatus map(int key) {
 		if (valueMap == null) {
 			valueMap = new HashMap<Integer, ProductApiRequestStatus>();
-
 			for (ProductApiRequestStatus status : ProductApiRequestStatus.values()) {
 				valueMap.put(status.getValue(), status);
 			}
