@@ -21,6 +21,17 @@ public class Transaction
 		return this;
 	}
 	
+	private int transactionNum;
+	public int getTransactionNum() 
+	{
+		return this.transactionNum;
+	}
+	public Transaction setTransactionNum(int transactionNum) 
+	{
+		this.transactionNum = transactionNum;
+		return this;
+	}
+	
 	private String lookupCode;
 	public String getLookupCode() 
 	{
@@ -131,7 +142,7 @@ public class Transaction
 	public Transaction() 
 	{
 		this.id = new UUID(0, 0);
-		this.transaction_num = -1;
+		this.transactionNum = -1;
 		this.lookupCode = "";
 
 		this.apiRequestMessage = StringUtils.EMPTY;
@@ -141,7 +152,7 @@ public class Transaction
 	public Transaction(TransactionEntity transactionEntity) 
 	{
 		this.id = transactionEntity.getId();
-		this.transaction_num = transactionEntity.getTransaction_Num();
+		this.transactionNum = transactionEntity.getTransactionNum();
 		this.lookupCode = transactionEntity.getLookupCode();
 
 		this.apiRequestMessage = StringUtils.EMPTY;

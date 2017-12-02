@@ -10,7 +10,6 @@ public enum ProductApiRequestStatus {
 	NOT_FOUND(3),
 	LOOKUP_CODE_ALREADY_EXISTS(4);
 	
-	//Danielle Testing
 	public int getValue() {
 		return value;
 	}

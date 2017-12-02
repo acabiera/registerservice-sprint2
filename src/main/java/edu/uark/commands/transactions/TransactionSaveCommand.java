@@ -65,7 +65,7 @@ public class TransactionSaveCommand implements ResultCommandInterface<Transactio
 	{
 		return this.transactionRepository;
 	}
-	public TransactionSaveCommand setTransactionRepository(TranactionRepositoryInterface transactionRepository) 
+	public TransactionSaveCommand setTransactionRepository(TransactionRepositoryInterface transactionRepository) 
 	{
 		this.transactionRepository = transactionRepository;
 		return this;
