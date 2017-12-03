@@ -2,9 +2,9 @@ package edu.uark.models.api;
 
 import java.util.UUID;
 
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 
-import edu.uark.models.api.enums.TransactionApiRequestStatus;
+//import edu.uark.models.api.enums.TransactionApiRequestStatus;
 import edu.uark.models.entities.TransactionEntity;
 
 public class Transaction 
@@ -41,7 +41,7 @@ public class Transaction
 		this.lookupCode = lookupCode;
 		return this;
 	}	
-	
+/*
 	private TransactionApiRequestStatus apiRequestStatus;
 	public TransactionApiRequestStatus getApiRequestStatus() 
 	{
@@ -70,16 +70,16 @@ public class Transaction
 		}
 		
 		return this;
-	}
+	}*/
 	
 	public Transaction() 
 	{
 		this.id = new UUID(0, 0);
 		this.transaction_num = -1;
 		this.lookupCode = "";
-
+/*
 		this.apiRequestMessage = StringUtils.EMPTY;
-		this.apiRequestStatus = TransactionApiRequestStatus.OK;
+		this.apiRequestStatus = TransactionApiRequestStatus.OK;*/
 	}
 	
 	public Transaction(TransactionEntity transactionEntity) 
@@ -87,9 +87,9 @@ public class Transaction
 		this.id = transactionEntity.getId();
 		this.transaction_num = transactionEntity.getTransaction_Num();
 		this.lookupCode = transactionEntity.getLookupCode();
-
+/*
 		this.apiRequestMessage = StringUtils.EMPTY;
-		this.apiRequestStatus = TransactionApiRequestStatus.OK;
+		this.apiRequestStatus = TransactionApiRequestStatus.OK;*/
 	}
 }
 
