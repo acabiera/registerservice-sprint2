@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import edu.uark.commands.transactions.TransactionByLookupCodeQuery;
+import edu.uark.commands.transactions.TransactionByTransaction_NumQuery;
 import edu.uark.commands.transactions.TransactionQuery;
 import edu.uark.commands.transactions.TransactionSaveCommand;
 import edu.uark.commands.transactions.TransactionsQuery;
@@ -31,11 +31,11 @@ public class TransactionRestController
 			execute();
 	}
 
-	@RequestMapping(value = "/apiv0/byLookupCode/{transactionLookupCode}", method = RequestMethod.GET)
-	public Transaction getTransactionByLookupCode(@PathVariable String transactionLookupCode) 
+	@RequestMapping(value = "/apiv0/byTransaction_Num/{Transaction_Num}", method = RequestMethod.GET)
+	public Transaction getTransactionByTransaction_Num(@PathVariable String transactionTransaction_Num) 
 	{
-		return (new TransactionByLookupCodeQuery()).
-			setLookupCode(transactionLookupCode).
+		return (new TransactionByTransaction_NumQuery()).
+			setTransaction_Num(transactionTransaction_Num).
 			execute();
 	}
 

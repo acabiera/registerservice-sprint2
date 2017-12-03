@@ -5,4 +5,5 @@ import edu.uark.models.entities.TransactionEntity;
 
 public interface TransactionRepositoryInterface extends BaseRepositoryInterface<TransactionEntity> {
 	TransactionEntity byLookupCode(String lookupCode);
+	TransactionEntity byTranasaction_Num(String transaction_num);
 }

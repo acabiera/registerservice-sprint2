@@ -9,17 +9,17 @@ import edu.uark.models.entities.TransactionEntity;
 import edu.uark.models.repositories.TransactionRepository;
 import edu.uark.models.repositories.interfaces.TransactionRepositoryInterface;
 
-public class TransactionByLookupCodeQuery implements ResultCommandInterface<Transaction> 
+public class TransactionByTransaction_NumQuery implements ResultCommandInterface<Transaction> 
 {
 	@Override
 	public Transaction execute() 
 	{
-		if (StringUtils.isBlank(this.lookupCode)) 
+		if (StringUtils.isBlank(this.transaction_num)) 
 		{
 			return new Transaction().setApiRequestStatus(TransactionApiRequestStatus.INVALID_INPUT);
 		}
 		
-		TransactionEntity transactionEntity = this.transactionRepository.byLookupCode(this.lookupCode);
+		TransactionEntity transactionEntity = this.transactionRepository.byTranasaction_Num(this.transaction_num);
 		if (transactionEntity != null) 
 		{
 			return new Transaction(transactionEntity);
@@ -31,14 +31,14 @@ public class TransactionByLookupCodeQuery implements ResultCommandInterface<Tran
 	}
 
 	//Properties
-	private String lookupCode;
-	public String getLookupCode() 
+	private String transaction_num;
+	public String getTransaction_Num() 
 	{
-		return this.lookupCode;
+		return this.transaction_num;
 	}
-	public TransactionByLookupCodeQuery setLookupCode(String lookupCode) 
+	public TransactionByTransaction_NumQuery setTransaction_Num(String transaction_num) 
 	{
-		this.lookupCode = lookupCode;
+		this.transaction_num = transaction_num;
 		return this;
 	}
 	
@@ -47,13 +47,13 @@ public class TransactionByLookupCodeQuery implements ResultCommandInterface<Tran
 	{
 		return this.transactionRepository;
 	}
-	public TransactionByLookupCodeQuery setTransactionRepository(TransactionRepositoryInterface transactionRepository) 
+	public TransactionByTransaction_NumQuery setTransactionRepository(TransactionRepositoryInterface transactionRepository) 
 	{
 		this.transactionRepository = transactionRepository;
 		return this;
 	}
 	
-	public TransactionByLookupCodeQuery() 
+	public TransactionByTransaction_NumQuery() 
 	{
 		this.transactionRepository = new TransactionRepository();
 	}
