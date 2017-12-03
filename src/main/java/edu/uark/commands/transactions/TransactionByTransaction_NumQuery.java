@@ -19,7 +19,7 @@ public class TransactionByTransaction_NumQuery implements ResultCommandInterface
 			return new Transaction().setApiRequestStatus(TransactionApiRequestStatus.INVALID_INPUT);
 		}
 		
-		TransactionEntity transactionEntity = this.transactionRepository.byTranasaction_Num(this.transaction_num);
+		TransactionEntity transactionEntity = this.transactionRepository.byTransaction_Num(this.transaction_num);
 		if (transactionEntity != null) 
 		{
 			return new Transaction(transactionEntity);

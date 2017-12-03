@@ -20,24 +20,14 @@ public class TransactionEntity extends BaseEntity<TransactionEntity>
 	protected void fillFromRecord(ResultSet rs) throws SQLException 
 	{
 		this.lookupCode = rs.getString(TransactionFieldNames.LOOKUP_CODE);
-		this.transactionNum = rs.getInt(TransactionFieldNames.TRANSACTION_NUM);
-		/*this.createdOn = rs.getTimestamp(TransactionFieldNames.CREATED_ON).toLocalDateTime();
-		this.name = rs.getString(TransactionFieldNames.NAME);
-		this.price = rs.getDouble(TransactionFieldNames.PRICE);
-		this.active = rs.getBoolean(TransactionFieldNames.ACTIVE);
-		this.description = rs.getString(TransactionFieldNames.DESCRIPTION);*/
+		this.transaction_num = rs.getInt(TransactionFieldNames.TRANSACTION_NUM);
 	}
 
 	@Override
 	protected Map<String, Object> fillRecord(Map<String, Object> record) 
 	{
 		record.put(TransactionFieldNames.LOOKUP_CODE, this.lookupCode);
-		record.put(TransactionFieldNames.TRANSACTION_NUM, this.transactionNum);
-		/*record.put(TransactionFieldNames.CREATED_ON, Timestamp.valueOf(this.createdOn));
-		record.put(TransactionFieldNames.NAME, this.name);
-		record.put(TransactionFieldNames.PRICE, this.price);
-		record.put(TransactionFieldNames.ACTIVE, this.active);
-		record.put(TransactionFieldNames.DESCRIPTION, this.description);*/
+		record.put(TransactionFieldNames.TRANSACTION_NUM, this.transaction_num);
 		
 		return record;
 	}
@@ -58,102 +48,26 @@ public class TransactionEntity extends BaseEntity<TransactionEntity>
 		return this;
 	}
 
-	private int transactionNum;
-	public int getTransactionNum() 
+	private int transaction_num;
+	public int getTransaction_Num() 
 	{
-		return this.transactionNum;
+		return this.transaction_num;
 	}
-	public TransactionEntity setTransactionNum(int transactionNum) 
+	public TransactionEntity setTransaction_Num(int transactionNum) 
 	{
-		if (this.transactionNum != transactionNum) 
+		if (this.transaction_num != transactionNum) 
 		{
-			this.transactionNum = transactionNum;
+			this.transaction_num = transactionNum;
 			this.propertyChanged(TransactionFieldNames.TRANSACTION_NUM);
 		}
 		
 		return this;
 	}
-
-	/*private LocalDateTime createdOn;
-	public LocalDateTime getCreatedOn() 
-	{
-		return this.createdOn;
-	}
-	
-	private String name;
-	public String getName() 
-	{
-		return this.name;
-	}
-	public TransactionEntity setName(String name) 
-	{
-		if (!StringUtils.equals(this.name, name)) 
-		{
-			this.name = name;
-			this.propertyChanged(TransactionFieldNames.NAME);
-		}
-		
-		return this;
-	}
-	
-	private double price;
-	public double getPrice() 
-	{
-		return this.price;
-	}
-	public TransactionEntity setPrice(double price) 
-	{
-		if (this.price != price) 
-		{
-			this.price = price;
-			this.propertyChanged(TransactionFieldNames.PRICE);
-		}
-		
-		return this;
-	}
-	
-	private boolean active;
-	public boolean getActive() 
-	{
-		return this.active;
-	}
-	public TransactionEntity setActive(boolean active) 
-	{
-		if (this.active != active) 
-		{
-			this.active = active;
-			this.propertyChanged(TransactionFieldNames.ACTIVE);
-		}
-		
-		return this;
-	}
-	
-	private String description;
-	public String getDescription() 
-	{
-		return this.description;
-	}
-	public TransactionEntity setDescription(String description) 
-	{
-		if (!StringUtils.equals(this.description, description)) 
-		{
-			this.description = description;
-			this.propertyChanged(TransactionFieldNames.DESCRIPTION);
-		}
-		
-		return this;
-	}*/
 	
 	public Transaction synchronize(Transaction apiTransaction) 
 	{
-		this.setTransactionNum(apiTransaction.getTransactionNum());
+		this.setTransaction_Num(apiTransaction.getTransaction_Num());
 		this.setLookupCode(apiTransaction.getLookupCode());
-		/*this.setName(apiTransaction.getName());
-		this.setPrice(apiTransaction.getPrice());
-		this.setActive(apiTransaction.getActive());
-		this.setDescription(apiTransaction.getDescription());
-		
-		apiTransaction.setCreatedOn(this.createdOn);*/
 		
 		return apiTransaction;
 	}
@@ -162,38 +76,23 @@ public class TransactionEntity extends BaseEntity<TransactionEntity>
 	{
 		super(new TransactionRepository());
 		
-		this.transactionNum = -1;
+		this.transaction_num = -1;
 		this.lookupCode = StringUtils.EMPTY;
-		/*this.createdOn = LocalDateTime.now();
-		this.name = StringUtils.EMPTY;
-		this.price = 0.00;
-		this.active = false;
-		this.description = StringUtils.EMPTY;*/
 	}
 	
 	public TransactionEntity(UUID id) 
 	{
 		super(id, new TransactionRepository());
 		
-		this.transactionNum = -1;
+		this.transaction_num = -1;
 		this.lookupCode = StringUtils.EMPTY;
-		/*this.createdOn = LocalDateTime.now();
-		this.name = StringUtils.EMPTY;
-		this.price = 0.00;
-		this.active = false;
-		this.description = StringUtils.EMPTY;*/
 	}
 
 	public TransactionEntity(Transaction apiTransaction) 
 	{
 		super(apiTransaction.getId(), new TransactionRepository());
 		
-		this.transactionNum = apiTransaction.getQuantity();
+		this.transaction_num = apiTransaction.getTransaction_Num();
 		this.lookupCode = apiTransaction.getLookupCode();
-		/*this.createdOn = LocalDateTime.now();
-		this.name = apiTransaction.getName();
-		this.price = apiTransaction.getPrice();
-		this.active = apiTransaction.getActive();
-		this.description = apiTransaction.getDescription();*/
 	}
 }

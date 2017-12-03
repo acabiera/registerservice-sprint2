@@ -12,9 +12,11 @@ import edu.uark.models.entities.TransactionEntity;
 import edu.uark.models.entities.fieldnames.TransactionFieldNames;
 import edu.uark.models.repositories.interfaces.TransactionRepositoryInterface;
 
-public class TransactionRepository extends BaseRepository<TransactionEntity> implements TransactionRepositoryInterface {
+public class TransactionRepository extends BaseRepository<TransactionEntity> implements TransactionRepositoryInterface 
+{
 	@Override
-	public TransactionEntity byLookupCode(String lookupCode) {
+	public TransactionEntity byLookupCode(String lookupCode) 
+	{
 		return this.firstOrDefaultWhere(
 			new WhereContainer(
 				(new WhereClause()).
@@ -43,7 +45,7 @@ public class TransactionRepository extends BaseRepository<TransactionEntity> imp
 	}
 
 	@Override
-	public TransactionEntity byTranasaction_Num(String transaction_num) 
+	public TransactionEntity byTransaction_Num(String transaction_num) 
 	{
 		// TODO Auto-generated method stub
 		return null;

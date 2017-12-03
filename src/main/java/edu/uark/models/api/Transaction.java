@@ -1,6 +1,5 @@
 package edu.uark.models.api;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,14 +20,14 @@ public class Transaction
 		return this;
 	}
 	
-	private int transactionNum;
-	public int getTransactionNum() 
+	private int transaction_num;
+	public int getTransaction_Num() 
 	{
-		return this.transactionNum;
+		return this.transaction_num;
 	}
-	public Transaction setTransactionNum(int transactionNum) 
+	public Transaction setTransaction_Num(int transaction_num) 
 	{
-		this.transactionNum = transactionNum;
+		this.transaction_num = transaction_num;
 		return this;
 	}
 	
@@ -41,73 +40,7 @@ public class Transaction
 	{
 		this.lookupCode = lookupCode;
 		return this;
-	}
-	
-	private int quantity;
-	public int getQuantity() 
-	{
-		return this.quantity;
-	}
-	public Transaction setQuantity(int quantity) 
-	{
-		this.quantity = quantity;
-		return this;
-	}
-	
-	private LocalDateTime createdOn;
-	public LocalDateTime getCreatedOn() 
-	{
-		return this.createdOn;
-	}
-	public Transaction setCreatedOn(LocalDateTime createdOn) 
-	{
-		this.createdOn = createdOn;
-		return this;
-	}
-	
-	private String name;
-	public String getName() 
-	{
-		return this.name;
-	}
-	public Transaction setName(String name) 
-	{
-		this.name = name;
-		return this;
-	}
-	
-	private double price;
-	public double getPrice() 
-	{
-		return this.price;
-	}
-	public Transaction setPrice(double price) 
-	{
-		this.price = price;
-		return this;
-	}
-	
-	private boolean active;
-	public boolean getActive() 
-	{
-		return this.active;
-	}
-	public Transaction setActive(boolean active) 
-	{
-		this.active = active;
-		return this;
-	}
-	
-	private String description;
-	public String getDescription() 
-	{
-		return this.description;
-	}
-	public Transaction setDescription(String description) 
-	{
-		this.description = description;
-		return this;
-	}
+	}	
 	
 	private TransactionApiRequestStatus apiRequestStatus;
 	public TransactionApiRequestStatus getApiRequestStatus() 
@@ -142,7 +75,7 @@ public class Transaction
 	public Transaction() 
 	{
 		this.id = new UUID(0, 0);
-		this.transactionNum = -1;
+		this.transaction_num = -1;
 		this.lookupCode = "";
 
 		this.apiRequestMessage = StringUtils.EMPTY;
@@ -152,7 +85,7 @@ public class Transaction
 	public Transaction(TransactionEntity transactionEntity) 
 	{
 		this.id = transactionEntity.getId();
-		this.transactionNum = transactionEntity.getTransactionNum();
+		this.transaction_num = transactionEntity.getTransaction_Num();
 		this.lookupCode = transactionEntity.getLookupCode();
 
 		this.apiRequestMessage = StringUtils.EMPTY;
